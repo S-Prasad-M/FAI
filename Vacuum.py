@@ -40,35 +40,42 @@ def clean(tile):
     #     elif i[1] == "Dirty":
     #         print("Suck", end = "\t")
     action_sequence = []
+    if tile[0][0]=='A':
+        curr = 'Left'
+    else:
+        curr = 'Right'
     curr = tile[0][0]
     count = 0
     for i in range(len(tile)):
-        if count == 0:
-            
-        if tile[i][0] == 'A' and tile[i][1] == 'Clean' and tile[i+1][0]=='B':
-            if curr == 'Left':
-                action_sequence.append("Right")
-                curr = 'Right'
-        elif tile[i][0] == 'B' and tile[i][1] == 'Clean' and tile[i+1][0]=='A':
-            if curr == 'Right':
-                action_sequence.append("Left")
-                curr = 'Left'
-        elif tile[i][1] == "Dirty":
-            if tile[i][0] == "A" and tile[i+1][0] == 'B':
-                action_sequence.append("Suck")
-                action_sequence.append("Right")
-                curr = 'Right'
-            elif tile[i][0] == "A" and tile[i+1][0] == 'A':
-                action_sequence.append("Suck")
-                curr = 'Left'   
-            elif tile[i][0] == "B" and tile[i+1][0] == 'B':
-                action_sequence.append("Suck")
-                curr = 'Right'
-            elif tile[i][0] == "B" and tile[i+1][0] == 'A':
-                action_sequence.append("Suck")
-                action_sequence.append("Left")
-                curr = 'Left'
+        if count == len(tile)-1:
+            if tile[i][1]== "Dirty":
+                action_sequence.append("Suck") 
+        else:
+            if tile[i][0] == 'A' and tile[i][1] == 'Clean' and tile[i+1][0]=='B':
+                if curr == 'Left':
+                    action_sequence.append("Right")
+                    curr = 'Right'
+            elif tile[i][0] == 'B' and tile[i][1] == 'Clean' and tile[i+1][0]=='A':
+                if curr == 'Right':
+                    action_sequence.append("Left")
+                    curr = 'Left'
+            elif tile[i][1] == "Dirty":
+                if tile[i][0] == "A" and tile[i+1][0] == 'B':
+                    action_sequence.append("Suck")
+                    action_sequence.append("Right")
+                    curr = 'Right'
+                elif tile[i][0] == "A" and tile[i+1][0] == 'A':
+                    action_sequence.append("Suck")
+                    curr = 'Left'   
+                elif tile[i][0] == "B" and tile[i+1][0] == 'B':
+                    action_sequence.append("Suck")
+                    curr = 'Right'
+                elif tile[i][0] == "B" and tile[i+1][0] == 'A':
+                    action_sequence.append("Suck")
+                    action_sequence.append("Left")
+                    curr = 'Left'
         count += 1
+    return action_sequence
 
 # tile1 = create_envi()
 # tile2 = create_envi()
@@ -79,4 +86,4 @@ tile = create_envi(n)
 for i in tile:
     print(i,end = "\t")
 print()
-clean(tile)
+print(clean(tile))
