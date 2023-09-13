@@ -45,22 +45,30 @@ def clean(tile):
     for i in range(len(tile)):
         if count == 0:
             
-        if tile[i][0] == 'A' and tile[i][1] == 'Clean':
+        if tile[i][0] == 'A' and tile[i][1] == 'Clean' and tile[i+1][0]=='B':
             if curr == 'Left':
-                print("NoAction", end = '\t')
-        elif tile[i][0] == 'B' and tile[i][1] == 'Clean':
-            if curr == 'Right':
-                print("NoAction", end = '\t')
-        elif tile[i][1] == "Dirty":
-            if tile[i][0] == "A" and curr == 'Right':
-                curr = 'Left'
-                print("Left","Suck", sep='\t', end='\t')
-            if tile[i][0] == "B" and curr == 'Left':
+                action_sequence.append("Right")
                 curr = 'Right'
-                print("Right","Suck", sep='\t', end='\t')
-            else: 
-                print("Suck", end = "\t")
-        # count += 1
+        elif tile[i][0] == 'B' and tile[i][1] == 'Clean' and tile[i+1][0]=='A':
+            if curr == 'Right':
+                action_sequence.append("Left")
+                curr = 'Left'
+        elif tile[i][1] == "Dirty":
+            if tile[i][0] == "A" and tile[i+1][0] == 'B':
+                action_sequence.append("Suck")
+                action_sequence.append("Right")
+                curr = 'Right'
+            elif tile[i][0] == "A" and tile[i+1][0] == 'A':
+                action_sequence.append("Suck")
+                curr = 'Left'   
+            elif tile[i][0] == "B" and tile[i+1][0] == 'B':
+                action_sequence.append("Suck")
+                curr = 'Right'
+            elif tile[i][0] == "B" and tile[i+1][0] == 'A':
+                action_sequence.append("Suck")
+                action_sequence.append("Left")
+                curr = 'Left'
+        count += 1
 
 # tile1 = create_envi()
 # tile2 = create_envi()
