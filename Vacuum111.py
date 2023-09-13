@@ -1,10 +1,3 @@
-A = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-]
-
-
 def print_F(floor, row, col):
     """A function to print the GRID , (row, col) represent the current vacuum cleaner position"""
     print("The Floor matrix is as below:")
