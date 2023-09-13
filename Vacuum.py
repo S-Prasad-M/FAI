@@ -3,7 +3,6 @@ import random
 locations = ['A', 'B']
 loc_type = ['Clean', 'Dirty']
 
-
 def create_envi(n):
     percept_sequence = []
     while n:
