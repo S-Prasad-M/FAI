@@ -40,7 +40,10 @@ def clean(tile):
     #     elif i[1] == "Dirty":
     #         print("Suck", end = "\t")
     curr = tile[0][0]
+    # count = 0
     for i in tile:
+        # if count == 0:
+            
         if i[0] == 'A' and i[1] == 'Clean':
             if curr == 'Left':
                 print("NoAction", end = '\t')
@@ -56,6 +59,7 @@ def clean(tile):
                 print("Right","Suck", sep='\t', end='\t')
             else: 
                 print("Suck", end = "\t")
+        # count += 1
 
 # tile1 = create_envi()
 # tile2 = create_envi()
