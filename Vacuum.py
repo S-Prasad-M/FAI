@@ -39,22 +39,23 @@ def clean(tile):
     #             print("Left", end = '\t')
     #     elif i[1] == "Dirty":
     #         print("Suck", end = "\t")
+    action_sequence = []
     curr = tile[0][0]
-    # count = 0
-    for i in tile:
-        # if count == 0:
+    count = 0
+    for i in range(len(tile)):
+        if count == 0:
             
-        if i[0] == 'A' and i[1] == 'Clean':
+        if tile[i][0] == 'A' and tile[i][1] == 'Clean':
             if curr == 'Left':
                 print("NoAction", end = '\t')
-        elif i[0] == 'B' and i[1] == 'Clean':
+        elif tile[i][0] == 'B' and tile[i][1] == 'Clean':
             if curr == 'Right':
                 print("NoAction", end = '\t')
-        elif i[1] == "Dirty":
-            if i[0] == "A" and curr == 'Right':
+        elif tile[i][1] == "Dirty":
+            if tile[i][0] == "A" and curr == 'Right':
                 curr = 'Left'
                 print("Left","Suck", sep='\t', end='\t')
-            if i[0] == "B" and curr == 'Left':
+            if tile[i][0] == "B" and curr == 'Left':
                 curr = 'Right'
                 print("Right","Suck", sep='\t', end='\t')
             else: 
