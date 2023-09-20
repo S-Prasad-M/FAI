@@ -23,3 +23,4 @@ for i in range(len(A)):
             A[i][j] = 1
 for row in A:
     print(row)
+    
